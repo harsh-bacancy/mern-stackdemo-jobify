@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "setup-project": "npm i && cd my-vue-app && npm i",
+    "setup-production-app": "npm i && cd my-vue-app && npm i && npm run build",
     "server": "nodemon server",
     "client": "cd my-vue-app && npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" "

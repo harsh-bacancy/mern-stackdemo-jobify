@@ -25,7 +25,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./my-vue-app/dist")));
 app.use(express.json()); // JSON parser middleware
 app.use(cookieParser()); // CookieParser middleware
 if (process.env.NODE_ENV === "development") {
@@ -36,7 +36,7 @@ app.use("/api/v1/auth", authRouter); // Auth middleware
 app.use("/api/v1/users", authenticateUser, userRouter); // User middleware
 app.use("/api/v1/jobs", authenticateUser, jobRouter); // Job middleware
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./my-vue-app/dist", "index.html"));
 });
 app.use("*", (req, res) => {
   res.status(StatusCodes.NOT_FOUND).json({ message: "Route not found" }); // Not found route error
