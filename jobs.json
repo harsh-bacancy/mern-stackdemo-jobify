@@ -1,0 +1,12 @@
+jobs = [
+    {
+      id: nanoid(10),
+      company: "tcs",
+      position: "front-end",
+    },
+    {
+      id: nanoid(10),
+      company: "microsoft",
+      position: "back-end",
+    },
+  ];
