@@ -14,6 +14,7 @@ import AreaChart from "./AreaChart";
 import BarChart from "./BarChart";
 import StatsContainer from "./StatsContainer";
 import ChartContainer from "./ChartContainer";
+import Loading from "./Loading";
 
 export {
   Logo,
@@ -32,4 +33,5 @@ export {
   BarChart,
   StatsContainer,
   ChartContainer,
+  Loading,
 };
