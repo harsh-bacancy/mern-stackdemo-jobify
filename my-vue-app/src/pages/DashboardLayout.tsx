@@ -29,9 +29,7 @@ export const loader = async () => {
 const DashboardLayout = () => {
   const navigate = useNavigate();
   const { user }: any = useLoaderData();
-  //temp data
 
-  // const user = { name: "Raja" };
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 

@@ -19,7 +19,6 @@ try {
 
   await Job.deleteMany({ createdBy: user._id });
   await Job.create(jobs);
-  console.log("Jobs Created");
 } catch (error) {
   console.log("🚀 ~ file: populate.js:13 ~ error:", error);
 } finally {

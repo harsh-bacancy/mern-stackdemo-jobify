@@ -20,7 +20,6 @@ export const authenticateUser = (req, res, next) => {
 };
 
 export const authorizePermissions = (role) => {
-  console.log(role);
   return (req, res, next) => {
     if (req.user.role !== role)
       throw new UnauthorizedError("Unauthorized to access this route");

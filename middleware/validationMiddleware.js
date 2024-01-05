@@ -23,7 +23,6 @@ const withValidationError = (validateValues) => {
           throw new NotFoundError(errorMessages);
         }
         if (errorMessages[0].startsWith("Not authorized")) {
-          console.log("herer");
           throw new UnauthorizedError(errorMessages);
         }
         throw new BadRequestError(errorMessages);

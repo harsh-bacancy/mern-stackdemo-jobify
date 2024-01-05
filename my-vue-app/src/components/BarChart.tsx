@@ -9,7 +9,6 @@ import {
 } from "recharts";
 
 const BarChartComponent = ({ data }: any) => {
-  console.log("🚀 ~ file: BarChart.tsx:12 ~ BarChartComponent ~ data:", data);
   return (
     <ResponsiveContainer width={"100%"} height={300}>
       <BarChart data={data} margin={{ top: 50 }}>
