@@ -5,18 +5,21 @@ import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
 import { FormRow, Logo, Submitbtn } from "../components";
 import customFetch from "../utils/customFetch";
 
-export const action = async ({ request }: any) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    await customFetch.post("/auth/login", data);
-    toast.success("Login successfull");
-    return redirect("/dashboard");
-  } catch (error: any) {
-    toast.error(error?.response?.data?.message);
-    return error;
-  }
-};
+export const action =
+  (queryClient) =>
+  async ({ request }: any) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      await customFetch.post("/auth/login", data);
+      queryClient.invalidateQueries();
+      toast.success("Login successfull");
+      return redirect("/dashboard");
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message);
+      return error;
+    }
+  };
 
 const Login = () => {
   const navigate = useNavigate();

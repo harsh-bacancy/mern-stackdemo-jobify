@@ -15,6 +15,7 @@ import BarChart from "./BarChart";
 import StatsContainer from "./StatsContainer";
 import ChartContainer from "./ChartContainer";
 import Loading from "./Loading";
+import ErrorElement from "./ErrorElement";
 
 export {
   Logo,
@@ -34,4 +35,5 @@ export {
   StatsContainer,
   ChartContainer,
   Loading,
+  ErrorElement,
 };

@@ -12,6 +12,7 @@ import { BigSidebar, Navbar, SmallSidebar, Loading } from "../components";
 import { checkDefaultTheme } from "../App";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 interface DashboardContextProps {
   user?: any;
@@ -23,20 +24,29 @@ interface DashboardContextProps {
 }
 const DashboardContext = createContext<DashboardContextProps>({});
 
-export const loader = async () => {
-  try {
+const userQuery = {
+  queryKey: ["user"],
+  queryFn: async () => {
     const { data } = await customFetch.get("/users/current-user");
     return data;
+  },
+};
+
+export const loader = (queryClient) => async () => {
+  try {
+    await queryClient.ensureQueryData(userQuery);
+    return null;
   } catch (error) {
     return redirect("/");
   }
 };
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ queryClient }) => {
   const navigate = useNavigate();
   const { state } = useNavigation();
   const isPageLoading = state === "loading";
-  const { user }: any = useLoaderData();
+  const { data } = useQuery(userQuery);
+  const { user }: any = data;
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
@@ -52,6 +62,7 @@ const DashboardLayout = () => {
   const logoutUser = async () => {
     try {
       const { data } = await customFetch.get("/auth/logout");
+      queryClient.invalidateQueries();
       return data;
     } catch (error) {
       return error;
