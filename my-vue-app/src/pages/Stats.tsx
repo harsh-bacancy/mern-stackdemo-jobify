@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { StatsContainer, ChartContainer } from "../components";
 import { useQuery } from "@tanstack/react-query";
@@ -11,7 +10,7 @@ const statsQuery = {
   },
 };
 
-export const loader = (queryClient) => async () => {
+export const loader = (queryClient: any) => async () => {
   await queryClient.ensureQueryData(statsQuery);
   return null;
 };

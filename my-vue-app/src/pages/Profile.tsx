@@ -6,7 +6,7 @@ import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
 export const action =
-  (queryClient) =>
+  (queryClient: any) =>
   async ({ request }: any) => {
     const formData = await request.formData();
     if (formData && formData.size > 500000) {

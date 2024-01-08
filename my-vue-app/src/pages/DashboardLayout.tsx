@@ -1,11 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  Outlet,
-  redirect,
-  useLoaderData,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
+import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
 
 import Wrapper from "../assets/wrappers/Dashboard";
 import { BigSidebar, Navbar, SmallSidebar, Loading } from "../components";
@@ -32,7 +26,7 @@ const userQuery = {
   },
 };
 
-export const loader = (queryClient) => async () => {
+export const loader = (queryClient: any) => async () => {
   try {
     await queryClient.ensureQueryData(userQuery);
     return null;
@@ -41,7 +35,7 @@ export const loader = (queryClient) => async () => {
   }
 };
 
-const DashboardLayout = ({ queryClient }) => {
+const DashboardLayout = ({ queryClient }: any) => {
   const navigate = useNavigate();
   const { state } = useNavigation();
   const isPageLoading = state === "loading";

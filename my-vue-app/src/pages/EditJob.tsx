@@ -8,7 +8,7 @@ import customFetch from "../utils/customFetch";
 import { useQuery } from "@tanstack/react-query";
 
 export const action =
-  (queryClient) =>
+  (queryClient: any) =>
   async ({ request, params }: any) => {
     try {
       const formData = await request.formData();
@@ -24,7 +24,7 @@ export const action =
     }
   };
 
-const singleJobQuery = (id) => {
+const singleJobQuery = (id: string) => {
   return {
     queryKey: ["job", id],
     queryFn: async () => {
@@ -35,7 +35,7 @@ const singleJobQuery = (id) => {
 };
 
 export const loader =
-  (queryClient) =>
+  (queryClient: any) =>
   async ({ params }: any) => {
     try {
       await queryClient.ensureQueryData(singleJobQuery(params.id));

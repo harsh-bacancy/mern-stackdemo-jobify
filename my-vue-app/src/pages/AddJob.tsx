@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
 
 export const action =
-  (queryClient) =>
+  (queryClient: any) =>
   async ({ request }: any) => {
     try {
       const formData = await request.formData();

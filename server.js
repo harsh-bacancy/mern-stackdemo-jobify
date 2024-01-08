@@ -8,6 +8,8 @@ import { StatusCodes } from "http-status-codes";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import cloudinary from "cloudinary";
+import helmet from "helmet";
+import mongosanitize from "express-mongo-sanitize";
 
 import jobRouter from "./routes/jobRouter.js";
 import authRouter from "./routes/authRouter.js";
@@ -26,8 +28,10 @@ cloudinary.config({
 });
 
 app.use(express.static(path.resolve(__dirname, "./my-vue-app/dist")));
-app.use(express.json()); // JSON parser middleware
 app.use(cookieParser()); // CookieParser middleware
+app.use(express.json()); // JSON parser middleware
+app.use(helmet());
+app.use(mongosanitize());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev")); // Logs in development mode
 }

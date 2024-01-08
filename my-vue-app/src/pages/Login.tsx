@@ -6,7 +6,7 @@ import { FormRow, Logo, Submitbtn } from "../components";
 import customFetch from "../utils/customFetch";
 
 export const action =
-  (queryClient) =>
+  (queryClient: any) =>
   async ({ request }: any) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
